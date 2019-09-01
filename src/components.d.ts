@@ -23,6 +23,7 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface MyNavigation {}
 }
 
 declare global {
@@ -33,8 +34,15 @@ declare global {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
+
+  interface HTMLMyNavigationElement extends Components.MyNavigation, HTMLStencilElement {}
+  var HTMLMyNavigationElement: {
+    prototype: HTMLMyNavigationElement;
+    new (): HTMLMyNavigationElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'my-navigation': HTMLMyNavigationElement;
   }
 }
 
@@ -53,9 +61,11 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface MyNavigation extends JSXBase.HTMLAttributes<HTMLMyNavigationElement> {}
 
   interface IntrinsicElements {
     'my-component': MyComponent;
+    'my-navigation': MyNavigation;
   }
 }
 
